@@ -1,0 +1,44 @@
+﻿@model MyMVCApp.Models.HtmlHelpers
+@{
+    ViewBag.Title = "CustomHtmlHelper";
+}
+
+<h1>CustomHtmlHelper</h1>
+
+<p>There are two ways in MVC to create custom Html helpers.</p>
+<ol>
+    <li>Add extension method for HtmlHelper class</li>
+    <li>Use static method</li>
+</ol>
+<p>Both of these Html helpers will encode and format XML for insertion into the page</p>
+<p><b>Note: </b>Both of these helpers use TagBuilder and HtmlHelper.AnonymousObjectToHtmlAttributes.</p>
+<div>
+     <div class="row">
+        <div class="control-label col-md-10">
+            <h2>Extension Method</h2>
+
+            @Html.EncodeAndFormatXmlForDisplayExtension(Model.WellFormedXml, new { @style = "border-color:grey;background:white" })
+            <img class="img-responsive" src="~/Content/ExtensionHtmlHelper.jpg" />
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="control-label col-md-10">
+            <h2>Static Method</h2>
+            <p><b>Note: </b>This static method will return an error because the XML is not wellformed.</p>
+
+            @CustomHtmlHelpers.EncodeAndFormatXmlForDisplayStatic(Model.MalformedXml, new { @style = "border-color:grey;background:white" })
+
+            <img class="img-responsive" src="~/Content/StaticHtmlHelper.jpg" />
+
+
+        </div>
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
