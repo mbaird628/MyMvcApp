@@ -132,8 +132,15 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ConfirmEmail.png" />
+    <Content Include="Content\EmailAddress.png" />
     <Content Include="Content\ExtensionHtmlHelper.jpg" />
+    <Content Include="Content\NumberRange.png" />
+    <Content Include="Content\PhoneNumber.png" />
+    <Content Include="Content\Required.png" />
     <Content Include="Content\StaticHtmlHelper.jpg" />
+    <Content Include="Content\StringLength.png" />
+    <Content Include="Content\StringLengthRange.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

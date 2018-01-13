@@ -21,6 +21,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-10">
+                    <img src="~/Content/StringLength.png" /></p>
+            </div>
             @Html.LabelFor(model => model.StringLengthValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StringLengthValidation, new { htmlAttributes = new { @class = "form-control" } })
@@ -29,6 +33,11 @@
         </div>
 
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-10">
+                    <img src="~/Content/StringLengthRange.png" />
+                </p>
+            </div>
             @Html.LabelFor(model => model.StringRangeValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StringRangeValidation, new { htmlAttributes = new { @class = "form-control" } })
@@ -37,6 +46,11 @@
         </div>
 
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-8">
+                    <img src="~/Content/PhoneNumber.png" />
+                </p>
+            </div>
             @Html.LabelFor(model => model.PhoneNumberValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhoneNumberValidation, new { htmlAttributes = new { @class = "form-control" } })
@@ -45,6 +59,12 @@
         </div>
 
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-8">
+
+                    <img src="~/Content/Required.png" />
+                </p>
+            </div>
             @Html.LabelFor(model => model.RequiredValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.RequiredValidation, new { htmlAttributes = new { @class = "form-control" } })
@@ -52,6 +72,11 @@
             </div>
         </div>
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-8">
+                    <img src="~/Content/EmailAddress.png" />
+                </p>
+            </div>
             @Html.LabelFor(model => model.EmailValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.EmailValidation, new { htmlAttributes = new { @class = "form-control" } })
@@ -60,6 +85,11 @@
         </div>
 
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-8">
+                    <img src="~/Content/ConfirmEmail.png" />
+                </p>
+            </div>
             @Html.LabelFor(model => model.ConfirmationEmailValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ConfirmationEmailValidation, new { htmlAttributes = new { @class = "form-control" } })
@@ -68,6 +98,11 @@
         </div>
 
         <div class="form-group">
+            <div class="row">
+                <p class="col-lg-offset-2 col-md-8">
+                    <img src="~/Content/NumberRange.png" />
+                </p>
+            </div>
             @Html.LabelFor(model => model.NumberRangeValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumberRangeValidation, new { htmlAttributes = new { @class = "form-control" } })
