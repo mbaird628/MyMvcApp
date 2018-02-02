@@ -9,7 +9,7 @@ namespace MyMVCApp.Models
     {
         public HtmlHelpers()
         {
-            WellFormedXml = "<contact><name>Mark Baird</name><phone type='mobile'>651-442-9504</phone></contact>";
+            WellFormedXml = @"<contact><name>Mark Baird</name><phone type='mobile'>651-442-9504</phone></contact>";
             MalformedXml = "<contact><name>Mark Baird</name><phone type='mobile'>651-442-9504</contact>";
         }
 

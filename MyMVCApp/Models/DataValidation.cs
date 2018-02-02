@@ -38,5 +38,6 @@ namespace MyMVCApp.Models
         [Range(minimum:4,maximum:10)]
         public int NumberRangeValidation { get; set; }
 
+
     }
 }

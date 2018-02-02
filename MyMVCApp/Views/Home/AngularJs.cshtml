@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Required for bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script data-require="angular.js@1.6.5" data-semver="1.6.5" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/AngularJs.js"></script>
+    <link href="~/Content/AngularJs.css" rel="stylesheet" />
+</head>
+<body ng-app="myApp">
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>Angular JS and Bootstrap</h1>
+        </div>
+        <my-custom-angular-directive></my-custom-angular-directive>
+        <section class="well well-sm">Data Binding</section>
+        <div ng-controller="personCtrl" style="margin:15px">
+            <!-- Binding to a style attribute -->
+            <p class="topic">Binding to a style attribute using an expression and two-way binding 'ng-model'.</p>
+            <p>When you type an HTML color into the input box, below, the value of the background property will be changed.</p>
+            <code>
+                &lt;input style="background:<span>{</span>{color}}" ng-model="color" value="<span>{</span>{color}}"/&gt;
+            </code>
+            <form style="margin:15px;">
+                Type a color to change the background:
+                <br>
+                <input style="background:{{color}}" type="text" ng-model="color" value="{{color}}" />
+            </form>
+            <!-- Two-way binding using "ng-model" -->
+            <p class="topic">Two-way binding using "ng-model"</p>
+            <p>When you type something in the two input boxes below the model will be updated reflecting the change below the input boxes.</p>
+            <code>
+                &lt;input ng-model=&quot;firstName&quot;&gt;<br>
+                &lt;input ng-model=&quot;lastName&quot; &gt;
+            </code>
+            <form>
+                First name:
+                <br>
+                <input ng-model="firstName">
+                <br> Last name:
+                <br>
+                <input ng-model="lastName">
+            </form>
+            <!-- One-way binding using "ng-bind" -->
+            <p class="topic">One-way binding using "ng-bind"</p>
+            <code>
+                First name: &lt;span ng-bind=&quot;firstName&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+                <br>Full name: &lt;span ng-bind=&quot;firstName + ' ' + lastName&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+            </code>
+
+            <p class="exampleFont exampleBlock">First name: <span ng-bind="firstName"></span></p>
+            <p class="exampleFont exampleBlock">
+                Full name: <span ng-bind="firstName + ' ' + lastName"></span>
+            </p>
+            <!-- One-way binding using an "expression" -->
+            <p class="topic">One-way binding using an "expression"</p>
+
+            <code>
+                First name: <span>{</span>{firstName}}&lt;/p&gt;
+                <br>Full name: <span>{</span>{firstName + &quot; &quot; + lastName}}&lt;/p&gt;
+            </code>
+
+            <p class="exampleFont exampleBlock">First name: {{firstName}}</p>
+            <p class="exampleFont exampleBlock">Full name: {{firstName + " " + lastName}}</p>
+            <!-- One-way binding using an "expression" and JSON -->
+            <p class="topic">One-way binding using an "expression" and JSON</p>
+            <p>Full name: {{person.firstName + " " + person.lastName}}</p>
+            <!-- One-way binding using an "ng-bind" and JSON -->
+            <p class="topic">One-way binding using an "ng-bind" and JSON</p>
+            <p class="exampleFont exampleBlock">
+                Full name: <span ng-bind="person.firstName + ' ' + person.lastName"></span>
+            </p>
+            <!-- Binding to a function in the controller -->
+            <p class="topic">Binding to a function in the controller</p>
+            <p class="exampleFont exampleBlock">Full name: {{fullName()}}</p>
+            <code>
+                &lt;ul ng-controller=&quot;namesCtrl&quot;&gt;<br>
+                &nbsp;&nbsp;&lt;li ng-repeat=&quot;x in nameAndCountry | orderBy:'name'&quot;&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span>{</span>{ x.name + ', ' + x.country }}<br>
+                &nbsp;&nbsp;&lt;/li&gt;<br>
+                &lt;/ul&gt;
+            </code>
+            <section class="well well-sm">Building a bootstrap list with ng-repeat</section>
+            <ul class="list-group" ng-controller="namesCtrl">
+                <li class="list-group-item" ng-repeat="x in nameAndCountry | orderBy:'name'">
+                    {{ x.name + ', ' + x.country }}
+                </li>
+            </ul>
+            <section class="well well-sm">Building tablular layout with ng-repeat</section>
+            <p class="topic">Using bootstrap with grid layout</p>
+            <div ng-controller="namesCtrl">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" ng-click="orderBy('name')">Sort by name</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="optradio" ng-click="orderBy('country')">Sort by country</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="dropdown">
+                            <button class="btn btn-xs btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Sort
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li style="font-weight:bold;padding-left:5px" ng-click="orderBy('name')">Name</li>
+                                <li style="font-weight:bold;padding-left:5px" ng-click="orderBy('country')">Country</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="topic">Using a table</p>
+                <table width="25%" class="table table-striped table-hover">
+                    <tbody>
+                        <tr ng-repeat="x in nameAndCountry | orderBy:myOrderBy">
+                            <td>{{x.name}}</td>
+                            <td ng-bind="x.country"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

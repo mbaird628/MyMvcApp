@@ -33,5 +33,21 @@ namespace MyMVCApp.Controllers
         {
             return View();
         }
+
+        public ActionResult AngularJs()
+        {
+            return View();
+        }
+
+        public ActionResult CustomValidation()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CustomValidation(Models.CustomValidation model)
+        {
+            return View(model);
+        }
     }
 }
