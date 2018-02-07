@@ -1,12 +1,12 @@
 ﻿
-    jQuery.validator.addMethod("dategreaterthan", function (value, element) {
-        return Date.parse(value) > Date.parse($('#StartDate').val());
-    });
+jQuery.validator.addMethod("dategreaterthan", function (value, element, startdate) {
+    return Date.parse(value) > Date.parse($(startdate).val());
+});
 
-    jQuery.validator.unobtrusive.adapters.add("dategreaterthan", ["startdate"], function (options) {
-        options.rules["dategreaterthan"] = "#" + options.params.otherpropertyname;
-        options.messages["dategreaterthan"] = options.message;
-    });
+jQuery.validator.unobtrusive.adapters.add("dategreaterthan", ["startdate"], function (options) {
+    options.rules["dategreaterthan"] = "#" + options.params.startdate;
+    options.messages["dategreaterthan"] = options.message;
+});
 
 
     jQuery.validator.addMethod('validbirthdate', function (value, element) {

@@ -54,20 +54,10 @@ namespace MyMVCApp.CustomValidation
 
             ModelClientValidationRule mvr = new ModelClientValidationRule();
             mvr.ErrorMessage = errorMessage;
-            // dategreaterthanThis is used by jQuery adaptor as shown below
-            mvr.ValidationType = "dategreaterthan"; 
-            // otherpropertyname as shown below is the jQuery parameter for the adapter, must be LOWERCASE!
+            mvr.ValidationType = "dategreaterthan";
             mvr.ValidationParameters.Add("startdate", otherPropertyName);
-
             yield return mvr;
 
-            //$.validator.addMethod("dategreaterthan", function(value, element, params) {
-            //    return Date.parse(value) > Date.parse($('#StartDate').val());
-            //});
-            //$.validator.unobtrusive.adapters.add("dategreaterthan", ["startdate"], function(options) {
-            //    options.rules["dategreaterthan"] = "#" + options.params.otherpropertyname;
-            //    options.messages["dategreaterthan"] = options.message;
-            //});
         }
     }
 }
