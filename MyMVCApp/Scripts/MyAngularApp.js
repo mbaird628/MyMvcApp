@@ -38,20 +38,27 @@
     app.controller('namesCtrl', function ($scope) {
         //$scope is the model in the Angular MVC app
         $scope.nameAndCountry = [{
-            name: 'Mark Baird',
-            country: 'USA'
+                first: 'Mark',
+                last:'Baird',
+                country: 'USA'
         }, {
-            name: 'Jerry Brown',
-            country: 'Sweden'
+                first: 'Jerry',
+                last: 'Anderson',
+                country: 'Sweden'
         }, {
-            name: 'Bob Bennet',
-            country: 'Mars'
+                first: 'Robert',
+                last:'Johnson',
+                country: 'Mars'
         }, {
-            name: 'Jermy Anderson',
-            country: 'France'
+                first: 'Bob',
+                last:'Hope',
+                country: 'France'
         }];
-        $scope.orderBy = function (x) {
+
+        
+        $scope.orderBy = function (x,y) {
             $scope.myOrderBy = x;
+            $scope.isReverse = y;
         };
     });
 

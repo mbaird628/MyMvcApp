@@ -1,0 +1,34 @@
+﻿@model MyMVCApp.Models.HtmlHelpers
+@{
+    ViewBag.Title = "Custom Html Helper";
+}
+@section Footer
+    {
+    <p>
+        @Html.ActionLink("Back to home", "Index")
+    </p>
+}
+@section Title
+{
+    @ViewBag.Title
+}
+
+@section Resources
+{
+    <p><a href="https://app.pluralsight.com/library/courses/html-helper-library-aspdotnet-mvc5/table-of-contents" target="_blank">Build an HTML Helper Library for ASP.NET MVC 5</a></p>
+}
+
+<h3>Extension Method</h3>
+
+<p>Both of the Html helpers will encode and format XML for insertion into the page</p>
+<p><b>Note: </b>Both of these helpers use TagBuilder and HtmlHelper.AnonymousObjectToHtmlAttributes.</p>
+<div>
+    <div class="row">
+        <div class="control-label col-md-10">
+            <h2>Extension Method</h2>
+
+            @Html.EncodeAndFormatXmlForDisplayExtension(Model.WellFormedXml, new { @style = "border-color:grey;background:white" })
+            <img class="img-responsive" src="~/Content/ExtensionHtmlHelper.jpg" />
+        </div>
+    </div>
+</div>

@@ -5,13 +5,33 @@
     ViewBag.Title = "Clientside Validation";
 }
 
-<h2>@ViewBag.Title</h2>
-<p>By default clientside validation is set to true in "Web.config" as shown below. Both 'ClientValidationEnable' and 'UnobtrusiveJavaScriptEnabled' must be set to true</p>
+
+@section Footer
+{
+    <p>
+        @Html.ActionLink("Back to home", "Index")
+    </p>
+}
+
+@section Title
+{
+    @ViewBag.Title
+}
+
+<p>
+    By default clientside validation is set to true in "Web.config" as shown below. Both 'ClientValidationEnable' and 'UnobtrusiveJavaScriptEnabled' must be set to true. If these flags are set to false the validation will occur on the server.
+</p>
+<p>
+   <b>Note:</b> When you are performing serverside validation you should check the state of the model using "ModelState.IsValid".
+</p>
 @{
-    // This needs to go into the repository. 
+    // This needs to go into the repository.
     var xml = "<appSettings><add key='ClientValidationEnabled' value='true' /><add key='UnobtrusiveJavaScriptEnabled' value='true' /></appSettings>";
 }
 @CustomHtmlHelpers.EncodeAndFormatXmlForDisplayStatic(xml, new { @style = "border-color:grey;background:white" })
+
+<p>This page uses <a href="https://www.nuget.org/packages/jQuery.Validation.Unobtrusive/">jquery.validate.unobtrusive.js</a>.</p>
+<p>If you would like to use Bootstrap tooltips for error messages you can use <a href="https://johnnyreilly.github.io/jQuery.Validation.Unobtrusive.Native/Demo.html" target="_blank"> jquery.validate.unobtrusive.native</a></p>
 
 @using (Html.BeginForm())
 {
@@ -23,12 +43,14 @@
         <div class="form-group">
             <div class="row">
                 <p class="col-lg-offset-2 col-md-10">
-                    <img src="~/Content/StringLength.png" /></p>
+                    <img src="~/Content/StringLength.png" />
+                </p>
             </div>
             @Html.LabelFor(model => model.StringLengthValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StringLengthValidation, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.StringLengthValidation, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
@@ -106,7 +128,7 @@
             @Html.LabelFor(model => model.NumberRangeValidation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumberRangeValidation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberRangeValidation,"",new { @class= "text-danger"})
+                @Html.ValidationMessageFor(model => model.NumberRangeValidation, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -118,7 +140,4 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 

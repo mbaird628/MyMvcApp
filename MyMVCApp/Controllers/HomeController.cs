@@ -19,22 +19,27 @@ namespace MyMVCApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult ClientsideValidation(Models.DataValidation model)
+        public ActionResult ClientsideValidation(Models.DataValidation dataValidation)
         {
+            if(ModelState.IsValid)
+            {
+                // Persist the data
+            }
             return View();
         }
 
-        public ActionResult CustomHtmlHelper()
+        public ActionResult CustomHtmlExtensionHelper()
         {
            return View(new Models.HtmlHelpers());
         }
-        [HttpPost]
-        public ActionResult CustomHtmlHelper(Models.HtmlHelpers modle)
+
+        public ActionResult CustomHtmlStaticMethod()
         {
-            return View();
+            return View(new Models.HtmlHelpers());
         }
 
-        public ActionResult AngularJs()
+        [HttpPost]
+        public ActionResult CustomHtmlHelper(Models.HtmlHelpers modle)
         {
             return View();
         }

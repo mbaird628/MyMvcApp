@@ -22,25 +22,50 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Clientside validation", "ClientsideValidation")</li>
-                    <li>@Html.ActionLink("Custom Validation", "CustomValidation")</li>
-                    <li>@Html.ActionLink("Custom Html Helper", "CustomHtmlHelper")</li>
-                    <li>@Html.ActionLink("Angular Example", "AngularJs")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Validation<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Clientside Validation", "ClientsideValidation", "Home")</li>
+                            <li>@Html.ActionLink("Custom Validation", "CustomValidation", "Home")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Html Helpers<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("ExtensionMethod", "CustomHtmlExtensionHelper", "Home")</li>
+                            <li>@Html.ActionLink("Static Method", "CustomHtmlStaticMethod", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Angular Example", "AngularJs", "Angular")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
-        @RenderBody()
+        @*  Following is a section that is NOT optional.
+            If the second optional parameter is set to true then the section
+            needs to be defined in every view that is rendered inside this layout. *@
+        <h2>
+            @RenderSection("Title", true)
+        </h2>
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        @RenderBody()
+        @*  The following sections are optional.
+        If the second parameter is set to false then the section does not
+        need to be defined in every view that is rendered inside this layout. *@
+        @if (IsSectionDefined("Resources"))
+        {
+            <hr />
+            <h2>Resources</h2>
+        }
+        @RenderSection("Resources", false)
+        <hr />
+        @RenderSection("Footer", false)
+
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Scripts/CustomValidation.js?version=1"></script>
+
 </body>
 </html>
